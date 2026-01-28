@@ -33,6 +33,11 @@ ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
     y = "Popularity"
   ) +
   theme_minimal()
+
+```
+```{r}
+model <- lm(popularity ~ instrumentalness, data = dataset)
+summary(model)
 ```
 
 
