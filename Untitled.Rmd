@@ -28,6 +28,10 @@ plot(pressure)
 
 ```{r}
 head(dataset)
+plot(dataset$tempo, dataset$popularity,
+     main="My Title",
+     xlab="tempo",
+     ylab="popularity")
 ```
 
 
