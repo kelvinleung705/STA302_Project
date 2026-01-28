@@ -27,7 +27,7 @@ plot(pressure)
 ```
 
 ```{r}
-head(df)
+head(dataset)
 ```
 
 
