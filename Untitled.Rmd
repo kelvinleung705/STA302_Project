@@ -12,10 +12,10 @@ dataset <- read_csv("dataset.csv")
 ## Data Cleaning
 
 ```{r cars}
-dataset <- dataset[, !names(dataset) %in% c("track_id", "artists", "album_name", "track_name", "explicit", "mode", "...1")
+dataset <- dataset[, !names(dataset) %in% c("track_id", "artists", "album_name",
+                                            "track_name", "explicit", "mode",
+                                            "...1")]
 colnames(dataset)
-
-
 ```
 
 ## Including Plots
