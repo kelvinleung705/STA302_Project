@@ -7,6 +7,7 @@ date: "2026-01-28"
 ```{r setup, include=FALSE}
 library(readr)
 dataset <- read_csv("dataset.csv")
+library(ggplot2)
 ```
 
 ## Data Cleaning
@@ -20,7 +21,20 @@ colnames(dataset)
 
 ## Including Plots
 
-You can also embed plots, for example:
+Generated scatter plots for instrumentalness, liveness, valence, tempo, and 
+track_genre as independent variables and popularity as the variable of interest.
+
+```{r}
+ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Popularity vs Instrumentalness",
+    x = "Instrumentalness",
+    y = "Popularity"
+  ) +
+  theme_minimal()
+```
+
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
