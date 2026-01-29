@@ -58,11 +58,6 @@ model <- lm(popularity ~ instrumentalness, data = dataset)
 summary(model)
 ```
 
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
 ```{r}
 head(dataset)
 #plot(dataset$tempo, dataset$popularity,
