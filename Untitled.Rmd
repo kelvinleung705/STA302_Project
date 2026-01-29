@@ -75,7 +75,7 @@ ggplot(dataset, aes(x = tempo, y = popularity)) + # Changed to tempo
     y = "Popularity"
   ) +
   theme_minimal()
-ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
+ggplot(dataset, aes(x = valence, y = popularity)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
   scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
   scale_y_continuous(breaks = seq(0, 100, by = 10)) +
@@ -85,9 +85,81 @@ ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
     y = "Popularity"
   ) +
   theme_minimal()
+ggplot(dataset, aes(x = valence, y = tempo)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
+  scale_y_continuous(breaks = seq(0, 250, by = 25)) +
+  labs(
+    title = "tempo vs valence",
+    x = "valence",
+    y = "tempo"
+  ) +
+  theme_minimal()
+ggplot(dataset, aes(x = track_genre, y = popularity)) +
+  geom_boxplot(fill = "steelblue", outlier.alpha = 0.1) +
+  labs(title = "Popularity by Genre", x = "Genre", y = "Popularity") +
+  theme_minimal() +
+  coord_flip() # Useful if you have many genres (rotates the graph)
 ```
-
-
-
+```{r}
+ggplot(dataset, aes(x = popularity, y = acousticness)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(
+    title = "acousticness vs popularity",
+    x = "popularity",
+    y = "acousticness"
+  ) +
+  theme_minimal()
+```
+```{r}
+ggplot(dataset, aes(x = popularity, y = speechiness)) +
+  geom_jitter(alpha = 0.02, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(
+    title = "speechiness vs popularity",
+    x = "popularity",
+    y = "speechiness"
+  ) +
+  theme_minimal()
+```
+```{r}
+ggplot(dataset, aes(x = popularity, y = energy)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(
+    title = "energy vs popularity",
+    x = "popularity",
+    y = "energy"
+  ) +
+  theme_minimal()
+```
+```{r}
+ggplot(dataset, aes(x = popularity, y = danceability)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1)) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(
+    title = "danceability vs popularity",
+    x = "popularity",
+    y = "danceability"
+  ) +
+  theme_minimal()
+```
+```{r}
+ggplot(dataset, aes(x = popularity, y = duration_ms)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  scale_x_continuous(breaks = seq(0, 6000000, by = 600000)) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(
+    title = "duration_ms vs popularity",
+    x = "popularity",
+    y = "duration_ms"
+  ) +
+  theme_minimal()
+```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
