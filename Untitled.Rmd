@@ -36,6 +36,24 @@ ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
 
 ```
 ```{r}
+ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
+
+  labs(
+    title = "Popularity vs Instrumentalness",
+    subtitle = "Linear regression with fitted line",
+    x = "Instrumentalness",
+    y = "Popularity"
+  ) +
+  theme_minimal()
+
+```
+
+
+```{r}
 model <- lm(popularity ~ instrumentalness, data = dataset)
 summary(model)
 ```
