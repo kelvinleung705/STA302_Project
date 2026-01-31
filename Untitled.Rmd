@@ -36,6 +36,11 @@ ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
 
 ```
 ```{r}
+model <- lm(popularity ~ instrumentalness, data = dataset)
+summary(model)
+```
+
+```{r}
 ggplot(dataset, aes(x = instrumentalness, y = popularity)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
 
@@ -101,6 +106,30 @@ ggplot(dataset, aes(x = track_genre, y = popularity)) +
   theme_minimal() +
   coord_flip() # Useful if you have many genres (rotates the graph)
 ```
+
+```{r}
+# Predict Addiction Level based on which Platform they use
+model_platform <- lm(`Addiction Level` ~ Platform, data = dataset)
+
+# This will show a list of Platforms and their impact relative to the first platform
+summary(model_platform)
+```
+
+
+```{r}
+model <- lm(popularity ~ tempo, data = dataset)
+summary(model)
+```
+
+```{r}
+model <- lm(popularity ~ valence, data = dataset)
+summary(model)
+```
+```{r}
+model <- lm(popularity ~ track_genre, data = dataset)
+summary(model)
+```
+
 ```{r}
 ggplot(dataset, aes(x = popularity, y = acousticness)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -163,3 +192,122 @@ ggplot(dataset, aes(x = popularity, y = duration_ms)) +
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+dataset <- read_csv("Time-Wasters on Social Media.csv")
+
+```
+```{r}
+ggplot(dataset, aes(x = factor(`Addiction Level`), y = `Total Time Spent`)) +
+  geom_boxplot(fill = "steelblue", outlier.alpha = 0.5) +
+  labs(
+    title = "Total Time Spent by Addiction Level",
+    x = "Addiction Level (0-7)",
+    y = "Total Time Spent (Minutes)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(dataset, aes(x = factor(`Addiction Level`), y = `Importance Score`)) +
+  geom_boxplot(fill = "steelblue", outlier.alpha = 0.5) +
+  labs(
+    title = "Importance Score by Addiction Level",
+    x = "Addiction Level (0-7)",
+    y = "Importance Score"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(dataset, aes(x = factor(`Addiction Level`), y = `Scroll Rate`)) +
+  geom_boxplot(fill = "steelblue", outlier.alpha = 0.5) +
+  labs(
+    title = "Scroll Rate by Addiction Level",
+    x = "Addiction Level (0-7)",
+    y = "Scroll Rate"
+  ) +
+  theme_minimal()
+```
+
+
+
+
+```{r}
+ggplot(dataset, aes(x = `Total Time Spent`, y = `Addiction Level`)) +
+  # height = 0.2 restricts the jitter so points don't look like they belong to the wrong level
+  geom_jitter(color = "steelblue", alpha = 0.6, height = 0.2, width = 0) + 
+  # Ensures the Y axis only shows the integers 0 through 7
+  scale_y_continuous(breaks = seq(0, 7, by = 1)) +
+  labs(
+    title = "Addiction Level vs Total Time Spent",
+    x = "Total Time Spent",
+    y = "Addiction Level (0-7)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(dataset, aes(x = `Addiction Level`, y = `Total Time Spent`)) +
+  geom_jitter(alpha = 0.3, width = 0.2, height = 0.2) +
+  scale_x_continuous(breaks = seq(0, 7, by = 1)) +
+  labs(
+    title = "Total Time Spent vs Addiction Level",
+    x = "Addiction Level",
+    y = "Total Time Spent"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(dataset, aes(x = `Engagement`, y = `ProductivityLoss`)) +
+  geom_jitter(alpha = 0.3, width = 0.2, height = 0.2) +
+  scale_x_continuous(breaks = seq(0, 10000, by = 100)) +
+  labs(
+    title = "ProductivityLoss vs Engagement",
+    x = "Engagement",
+    y = "ProductivityLoss"
+  ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
+  labs(
+    title = "ProductivityLoss vs Engagement",
+    subtitle = "Linear regression with fitted line",
+    x = "Engagement",
+    y = "ProductivityLoss"
+  ) +
+  theme_minimal()
+
+
+
+```
+
+```{r}
+model <- lm(ProductivityLoss ~ Engagement, data = dataset)
+summary(model)
+```
+```{r}
+ggplot(dataset, aes(x = `Engagement`, y = `Importance Score`)) +
+  geom_jitter(alpha = 0.3, width = 0.2, height = 0.2) +
+  scale_x_continuous(breaks = seq(0, 10000, by = 100)) +
+  labs(
+    title = "Importance Score vs Engagement",
+    x = "Engagement",
+    y = "Importance Score"
+  ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
+  labs(
+    title = "Importance Score vs Engagement",
+    subtitle = "Linear regression with fitted line",
+    x = "Engagement",
+    y = "Importance Score"
+  ) +
+  theme_minimal()
+
+
+
+```
+```{r}
+model <- lm(`Importance Score` ~ Engagement, data = dataset)
+summary(model)
+```

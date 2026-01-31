@@ -1,0 +1,193 @@
+---
+title: "life expectancy code"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+dataset <- read_csv("life expectancy.csv")
+library(ggplot2)
+```
+
+
+
+```{r}
+ggplot(dataset, aes(x = `Health Expenditure %`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Health Expenditure %",
+    x = "Health Expenditure %",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Health Expenditure %`, data = dataset)
+summary(model)
+```
+
+
+```{r}
+ggplot(dataset, aes(x = `Prevelance of Undernourishment`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Prevelance of Undernourishment %",
+    x = "Prevelance of Undernourishment",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Prevelance of Undernourishment`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `CO2`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs CO2",
+    x = "CO2",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `CO2`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `Education Expenditure %`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Education Expenditure %",
+    x = "Education Expenditure %",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Education Expenditure %`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `Unemployment`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Unemployment",
+    x = "Unemployment",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Unemployment`, data = dataset)
+summary(model)
+```
+
+
+
+```{r}
+ggplot(dataset, aes(x = `Corruption`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Corruption",
+    x = "Corruption",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Corruption`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `Sanitation`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Sanitation",
+    x = "Sanitation",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Sanitation`, data = dataset)
+summary(model)
+```
+```{r}
+ggplot(dataset, aes(x = `Injuries`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Injuries",
+    x = "Injuries",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Injuries`, data = dataset)
+summary(model)
+```
+```{r}
+ggplot(dataset, aes(x = `Communicable`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs Communicable",
+    x = "Communicable",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Communicable`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `NonCommunicable`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs NonCommunicable",
+    x = "NonCommunicable",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `NonCommunicable`, data = dataset)
+summary(model)
+```
+
+```{r}
+ggplot(dataset, aes(x = `Year`, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
+  labs(
+    title = "Life Expectancy World Bank vs NonCommunicable",
+    x = "Year",
+    y = "Life Expectancy World Bank"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `Year`, data = dataset)
+summary(model)
+```
+
+
