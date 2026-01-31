@@ -19,7 +19,10 @@ ggplot(dataset, aes(x = `Health Expenditure %`, y = `Life Expectancy World Bank`
     x = "Health Expenditure %",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
+
 
 ```
 
@@ -37,6 +40,8 @@ ggplot(dataset, aes(x = `Prevelance of Undernourishment`, y = `Life Expectancy W
     x = "Prevelance of Undernourishment",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -53,6 +58,8 @@ ggplot(dataset, aes(x = `CO2`, y = `Life Expectancy World Bank`)) +
     x = "CO2",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -70,6 +77,8 @@ ggplot(dataset, aes(x = `Education Expenditure %`, y = `Life Expectancy World Ba
     x = "Education Expenditure %",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -86,6 +95,8 @@ ggplot(dataset, aes(x = `Unemployment`, y = `Life Expectancy World Bank`)) +
     x = "Unemployment",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -104,6 +115,8 @@ ggplot(dataset, aes(x = `Corruption`, y = `Life Expectancy World Bank`)) +
     x = "Corruption",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -120,6 +133,8 @@ ggplot(dataset, aes(x = `Sanitation`, y = `Life Expectancy World Bank`)) +
     x = "Sanitation",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -135,6 +150,8 @@ ggplot(dataset, aes(x = `Injuries`, y = `Life Expectancy World Bank`)) +
     x = "Injuries",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -150,6 +167,8 @@ ggplot(dataset, aes(x = `Communicable`, y = `Life Expectancy World Bank`)) +
     x = "Communicable",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -166,6 +185,8 @@ ggplot(dataset, aes(x = `NonCommunicable`, y = `Life Expectancy World Bank`)) +
     x = "NonCommunicable",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
@@ -182,6 +203,8 @@ ggplot(dataset, aes(x = `Year`, y = `Life Expectancy World Bank`)) +
     x = "Year",
     y = "Life Expectancy World Bank"
   ) +
+  # regression line
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
 
 ```
