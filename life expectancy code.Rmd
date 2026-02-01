@@ -3,26 +3,27 @@ title: "life expectancy code"
 output: html_document
 ---
 
+# Loading packages in
+Loaded the "life expectancy.csv" dataset and downloaded ggplot2 functions.
 ```{r setup, include=FALSE}
 library(readr)
 dataset <- read_csv("life expectancy.csv")
 library(ggplot2)
 ```
 
-
+# Modelling Health Expenditure % vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `Health Expenditure %`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
   labs(
-    title = "Life Expectancy World Bank vs Health Expenditure %",
+    title = "Life Expectancy vs Health Expenditure %",
     x = "Health Expenditure %",
-    y = "Life Expectancy World Bank"
+    y = "Life Expectancy"
   ) +
-  # regression line
+# regression line
   geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
   theme_minimal()
-
 
 ```
 
@@ -31,6 +32,7 @@ model <- lm(`Life Expectancy World Bank` ~ `Health Expenditure %`, data = datase
 summary(model)
 ```
 
+# Modelling Undernourishment % vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `Prevelance of Undernourishment`, y = `Life Expectancy World Bank`)) +
@@ -49,6 +51,8 @@ ggplot(dataset, aes(x = `Prevelance of Undernourishment`, y = `Life Expectancy W
 model <- lm(`Life Expectancy World Bank` ~ `Prevelance of Undernourishment`, data = dataset)
 summary(model)
 ```
+
+# Modelling CO2 vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `CO2`, y = `Life Expectancy World Bank`)) +
@@ -69,6 +73,8 @@ model <- lm(`Life Expectancy World Bank` ~ `CO2`, data = dataset)
 summary(model)
 ```
 
+# Modelling Education Expenditure % vs. Life Expectancy
+
 ```{r}
 ggplot(dataset, aes(x = `Education Expenditure %`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -86,6 +92,8 @@ ggplot(dataset, aes(x = `Education Expenditure %`, y = `Life Expectancy World Ba
 model <- lm(`Life Expectancy World Bank` ~ `Education Expenditure %`, data = dataset)
 summary(model)
 ```
+
+# Modelling Unemployment level vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `Unemployment`, y = `Life Expectancy World Bank`)) +
@@ -105,7 +113,7 @@ model <- lm(`Life Expectancy World Bank` ~ `Unemployment`, data = dataset)
 summary(model)
 ```
 
-
+# Modelling Corruption level vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `Corruption`, y = `Life Expectancy World Bank`)) +
@@ -125,6 +133,8 @@ model <- lm(`Life Expectancy World Bank` ~ `Corruption`, data = dataset)
 summary(model)
 ```
 
+# Modelling Sas=nitation score vs. Life Expectancy
+
 ```{r}
 ggplot(dataset, aes(x = `Sanitation`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -142,6 +152,9 @@ ggplot(dataset, aes(x = `Sanitation`, y = `Life Expectancy World Bank`)) +
 model <- lm(`Life Expectancy World Bank` ~ `Sanitation`, data = dataset)
 summary(model)
 ```
+
+# Modelling Injuries vs. Life Expectancy
+
 ```{r}
 ggplot(dataset, aes(x = `Injuries`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -159,6 +172,9 @@ ggplot(dataset, aes(x = `Injuries`, y = `Life Expectancy World Bank`)) +
 model <- lm(`Life Expectancy World Bank` ~ `Injuries`, data = dataset)
 summary(model)
 ```
+
+# Modelling Communicable vs. Life Expectancy
+
 ```{r}
 ggplot(dataset, aes(x = `Communicable`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -176,6 +192,8 @@ ggplot(dataset, aes(x = `Communicable`, y = `Life Expectancy World Bank`)) +
 model <- lm(`Life Expectancy World Bank` ~ `Communicable`, data = dataset)
 summary(model)
 ```
+
+# Modelling NonCommunicable vs. Life Expectancy
 
 ```{r}
 ggplot(dataset, aes(x = `NonCommunicable`, y = `Life Expectancy World Bank`)) +
@@ -195,6 +213,8 @@ model <- lm(`Life Expectancy World Bank` ~ `NonCommunicable`, data = dataset)
 summary(model)
 ```
 
+# Modelling Year vs. Life Expectancy
+
 ```{r}
 ggplot(dataset, aes(x = `Year`, y = `Life Expectancy World Bank`)) +
   geom_jitter(alpha = 0.05, width = 0.01, height = 0.5) +
@@ -213,4 +233,42 @@ model <- lm(`Life Expectancy World Bank` ~ `Year`, data = dataset)
 summary(model)
 ```
 
+# Modelling Country Income Group vs. Life Expectancy
+
+```{r}
+
+dataset$IncomeNum <- as.numeric(factor(
+  dataset$IncomeGroup,
+  levels = c(
+    "Low income",
+    "Lower middle income",
+    "Upper middle income",
+    "High income"
+  )
+))
+ggplot(dataset, aes(x = IncomeNum, y = `Life Expectancy World Bank`)) +
+  geom_jitter(alpha = 0.05, width = 0.05, height = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue", linewidth = 1.2) +
+  scale_x_continuous(
+    breaks = 1:4,
+    labels = c(
+      "Low income",
+      "Lower middle income",
+      "Upper middle income",
+      "High income"
+    )
+  ) +
+  labs(
+    title = "Life Expectancy by Income Group (Linear Trend)",
+    x = "Income Group",
+    y = "Life Expectancy (World Bank)"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+model <- lm(`Life Expectancy World Bank` ~ `IncomeNum`, data = dataset)
+summary(model)
+```
 
